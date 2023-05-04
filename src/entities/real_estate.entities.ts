@@ -9,10 +9,9 @@ import {
    PrimaryGeneratedColumn,
    UpdateDateColumn,
 } from "typeorm";
+import { Address, Category, Schedule } from ".";
 
-import { Schedule } from "./schedules.entities";
-import { Address } from "./addresses.entities";
-import { Category } from "./categories.entities";
+
 
 
 @Entity("real_estate")
@@ -46,4 +45,4 @@ class RealEstate {
    category: Category;
 }
 
-export { RealEstate };
+export default RealEstate ;

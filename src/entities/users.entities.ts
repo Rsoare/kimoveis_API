@@ -7,7 +7,8 @@ import {
    PrimaryGeneratedColumn,
    UpdateDateColumn,
 } from "typeorm";
-import { Schedule } from "./schedules.entities";
+import { Schedule } from ".";
+
 
 
 @Entity("users")
@@ -40,4 +41,4 @@ class User {
    schedules: Schedule[];
 }
 
-export { User };
+export default User ;

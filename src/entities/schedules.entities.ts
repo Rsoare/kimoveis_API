@@ -1,7 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { RealEstate, User } from ".";
 
-import { RealEstate } from "./real_estate.entities";
-import { User } from "./users.entities";
 
 @Entity("schedules")
 class Schedule {
@@ -21,4 +20,4 @@ class Schedule {
    realEstate: RealEstate;
 }
 
-export { Schedule };
+export default Schedule ;
