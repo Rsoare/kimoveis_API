@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { RealEstate } from ".";
+import RealEstate from "./real_estate.entities";
 
 
 
@@ -12,7 +12,7 @@ class Category {
    name: string;
 
    @OneToMany(() => RealEstate, (realEstate) => realEstate.category)
-   realEstate: RealEstate;
+   realEstate: RealEstate[];
 }
 
 export default Category;

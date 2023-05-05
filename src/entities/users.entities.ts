@@ -1,4 +1,5 @@
 import {
+   BeforeInsert,
    Column,
    CreateDateColumn,
    DeleteDateColumn,
@@ -7,12 +8,13 @@ import {
    PrimaryGeneratedColumn,
    UpdateDateColumn,
 } from "typeorm";
-import { Schedule } from ".";
+import Schedule from "./schedules.entities";
+import { hash } from "bcryptjs";
 
 
+@Entity("users") 
 
-@Entity("users")
-class User {
+class User  {
    @PrimaryGeneratedColumn("increment")
    id: number;
 
@@ -25,18 +27,23 @@ class User {
    @Column({ default: "false", type: "boolean" })
    admin: boolean;
 
-   @Column({ type: "varchar", length: 120 })
+   @Column({ type: "varchar", length: 120,select:false })
    password: string;
+   
+   @CreateDateColumn({type:"date"})
+   createdAt: string | Date;
 
-   @CreateDateColumn()
-   createdAt: Date | string;
-
-   @UpdateDateColumn()
-   updatedAt: Date | string;
-
-   @DeleteDateColumn({ nullable: true })
+   @UpdateDateColumn({type:"date"})
+   updatedAt: string | Date;
+   
+   @DeleteDateColumn({ nullable: true,type:"date" })
    deletedAt?: Date;
 
+   @BeforeInsert()
+   async insertHashPassword(){
+      this.password = await hash(this.password,10)
+   }
+   
    @OneToMany(() => Schedule, (schedules) => schedules.user)
    schedules: Schedule[];
 }

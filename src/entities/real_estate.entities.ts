@@ -9,12 +9,16 @@ import {
    PrimaryGeneratedColumn,
    UpdateDateColumn,
 } from "typeorm";
-import { Address, Category, Schedule } from ".";
+import Schedule from "./schedules.entities";
+import Address from "./addresses.entities";
+import Category from "./categories.entities";
+
 
 
 
 
 @Entity("real_estate")
+
 class RealEstate {
    @PrimaryGeneratedColumn("increment")
    id: number;
@@ -23,7 +27,7 @@ class RealEstate {
    sold: boolean;
 
    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
-   value: number;
+   value: string |  number;
 
    @Column({ type: "integer" })
    size: number;
@@ -37,12 +41,13 @@ class RealEstate {
    @OneToOne(() => Address, (address) => address.realEstate)
    @JoinColumn()
    address: Address;
+   
+   @ManyToOne(() => Category, (category) => category.realEstate)
+   category: Category;
 
    @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
    schedule: Schedule[];
 
-   @ManyToOne(() => Category)
-   category: Category;
 }
 
 export default RealEstate ;

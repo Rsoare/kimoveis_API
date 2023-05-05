@@ -1,5 +1,6 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
-import { RealEstate } from ".";
+import RealEstate from "./real_estate.entities";
+
 
 
 
