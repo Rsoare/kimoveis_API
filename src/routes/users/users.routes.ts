@@ -3,6 +3,7 @@ import { userSchemaRequest} from "../../schemas/users/users.schemas";
 import checkDuplicateEmail from "../../middlewares/users/checkDuplicateEmail";
 import validBodySchema from "../../middlewares/validBodySchema";
 import { getUsers, postUsers } from "../../controllers/users";
+import { checkValidAdminToken, checkValidToken } from "../../middlewares/token";
 
 
 
@@ -13,7 +14,10 @@ userRoutes.post('',
    validBodySchema(userSchemaRequest),
    postUsers)
 
-userRoutes.get('',getUsers)
+userRoutes.get('',
+   checkValidToken,
+   checkValidAdminToken,
+   getUsers)
 
 
 userRoutes.patch('/:id')
