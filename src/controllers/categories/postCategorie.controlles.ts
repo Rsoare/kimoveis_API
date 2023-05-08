@@ -10,9 +10,9 @@ const postCategories = async (
 
    const categorieBody:TCategoriesRequest = req.body
 
-   const newCategorie:Category = await postCategoriesServices(categorieBody)
+   const newCategory:Category = await postCategoriesServices(categorieBody)
 
-   return res.status(201).json(newCategorie)
+   return res.status(201).json(newCategory)
 
 };
 
