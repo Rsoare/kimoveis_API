@@ -6,8 +6,8 @@ const userSchema = z.object({
    email:z.string().email().max(45),
    password:z.string().max(120),
    admin: z.boolean().default(false),
-   createdAt:z.date(),
-   updatedAt:z.date(),
+   createdAt:z.string(),
+   updatedAt:z.string(),
    deletedAt:z.date().nullable()
 })
 
@@ -18,8 +18,11 @@ const userSchemaRequest = userSchema.omit({
    deletedAt:true
 })
 
+const updateSchemaRequest = userSchema.omit({id:true,admin:true,}).partial()
+
+
 const userSchemaResponse = userSchema.omit({
    password:true
 })
 
-export {userSchemaRequest,userSchemaResponse}
+export {userSchemaRequest,userSchemaResponse,updateSchemaRequest}

@@ -11,9 +11,12 @@ const createToken = async (bodyData:TLoginRequest):Promise<Ttoken> =>{
 
    const email:string = bodyData.email
 
-   const userRepository:Repository<User> = AppDataSource.getRepository(User)
-
-   const user:User | null = await userRepository.findOne({where:{email:email}})
+   const user:User | null = await AppDataSource
+      .getRepository(User)
+      .createQueryBuilder("users")
+      .where('users.email = :email',{email})
+      .addSelect("users.password")
+      .getOne()
 
    
    if (!user) {
@@ -21,11 +24,11 @@ const createToken = async (bodyData:TLoginRequest):Promise<Ttoken> =>{
    }
    
    const passwordCompare = await compare(bodyData.password, user.password)
-
+   
+   
    if(!passwordCompare){
       throw new AppError('Invalid credentials', 401)
    }
-
 
    const token = jwt.sign(
       {

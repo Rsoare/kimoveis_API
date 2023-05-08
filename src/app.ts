@@ -14,7 +14,7 @@ app.use('/users',userRoutes)
 
 app.use('/login',loginRoutes)
 
-// app.use('/categories')
+app.use('/categories')
 
 // app.use('/realEstate')
 

@@ -1,27 +1,55 @@
 import { Router } from "express";
-import { userSchemaRequest} from "../../schemas/users/users.schemas";
-import checkDuplicateEmail from "../../middlewares/users/checkDuplicateEmail";
 import validBodySchema from "../../middlewares/validBodySchema";
-import { getUsers, postUsers } from "../../controllers/users";
-import { checkValidAdminToken, checkValidToken } from "../../middlewares/token";
 
+import {
+   updateSchemaRequest,
+   userSchemaRequest,
+} from "../../schemas/users/users.schemas";
 
+import {
+   deleteUsers,
+   getUsers,
+   postUsers,
+   updateUsers,
+} from "../../controllers/users";
 
-const userRoutes:Router = Router()
+import { 
+   checkValidAdminToken, 
+   checkValidToken 
+} from "../../middlewares/token";
 
-userRoutes.post('',
+import { 
+   checkDuplicateEmail, 
+   checkValidUserId 
+} from "../../middlewares/users";
+
+const userRoutes: Router = Router();
+
+userRoutes.post("",
    checkDuplicateEmail,
    validBodySchema(userSchemaRequest),
-   postUsers)
+   postUsers
+);
 
-userRoutes.get('',
+userRoutes.get("", 
+   checkValidToken, 
+   checkValidAdminToken, 
+   getUsers
+);
+
+userRoutes.patch("/:id",
+   checkValidUserId,
    checkValidToken,
    checkValidAdminToken,
-   getUsers)
+   validBodySchema(updateSchemaRequest),
+   updateUsers
+);
 
+userRoutes.delete("/:id",
+   checkValidUserId,
+   checkValidToken,
+   checkValidAdminToken,
+   deleteUsers
+);
 
-userRoutes.patch('/:id')
-userRoutes.delete('/:id')
-
-
-export default userRoutes
+export default userRoutes;

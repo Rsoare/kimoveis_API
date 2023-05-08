@@ -8,11 +8,15 @@ const checkValidAdminToken = async (
 ): Promise<Response | void> => {
 
    const admin:boolean = res.locals.admin
-   const UserId:number = parseInt(res.locals.sub)
+   const sub:number = parseInt(res.locals.sub)
 
-   if(!admin){
+   const paramsId:number = parseInt(req.params.id) 
+
+   if(!admin && sub !== paramsId){
       throw new AppError("Insufficient permission",403)
    }
+
+
 
    return next()
 };

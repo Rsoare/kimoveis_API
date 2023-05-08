@@ -2,7 +2,6 @@ import { Repository } from "typeorm";
 import { TUserRequest, TUserResponse } from "../../interfaces/users/users.intefaces";
 import { User } from "../../entities";
 import { AppDataSource } from "../../data-source";
-import { hash } from "bcryptjs";
 import { userSchemaResponse } from "../../schemas/users/users.schemas";
 
 

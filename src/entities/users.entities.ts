@@ -31,13 +31,13 @@ class User  {
    password: string;
    
    @CreateDateColumn({type:"date"})
-   createdAt: string | Date;
+   createdAt: Date| string;
 
    @UpdateDateColumn({type:"date"})
-   updatedAt: string | Date;
+   updatedAt: Date | string;
    
    @DeleteDateColumn({ nullable: true,type:"date" })
-   deletedAt?: Date;
+   deletedAt?: Date | null ;
 
    @BeforeInsert()
    async insertHashPassword(){
