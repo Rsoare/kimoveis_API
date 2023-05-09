@@ -8,7 +8,7 @@ const getUsersServices = async ():Promise<User[]> => {
 
    const userRepository:Repository<User> = AppDataSource.getRepository(User)
    
-   const users:User[] = await userRepository
+   const users:User[] | null = await userRepository
       .createQueryBuilder('users')
       .select()
       .getMany()

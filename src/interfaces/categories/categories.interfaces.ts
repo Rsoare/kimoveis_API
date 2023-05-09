@@ -3,4 +3,12 @@ import {z} from "zod"
 
 type TCategoriesRequest = z.infer<typeof ctgSchemaRequest >
 
-export {TCategoriesRequest}
+type TCategoriesAndEstateResponse = {
+   id:number
+   name:string
+   realEstate:[],
+   createdAt:string,
+   updatedAt:string,
+}
+
+export {TCategoriesRequest,TCategoriesAndEstateResponse}

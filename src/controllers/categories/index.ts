@@ -1,3 +1,5 @@
-import postCategories from "./postCategorie.controlles";
+import postCategories from "./postCategory.controlles";
+import getCategories from "./getCategory.controlles";
+import getCategoriesAndRealEstate from "./getCategoryAndRealEstate.controlles";
 
-export {postCategories}
+export {postCategories,getCategories,getCategoriesAndRealEstate}

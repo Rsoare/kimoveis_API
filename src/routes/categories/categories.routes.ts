@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { postCategories } from "../../controllers/categories"
+import { getCategories, getCategoriesAndRealEstate, postCategories } from "../../controllers/categories"
 import { checkValidAdminToken, checkValidToken } from "../../middlewares/token"
 import { checkDuplicateCategory } from "../../middlewares/categories"
 
@@ -13,8 +13,8 @@ categoriesRoutes.post("",
    postCategories,
    )
 
-categoriesRoutes.get("")
+categoriesRoutes.get("",getCategories)
 
-categoriesRoutes.get("/:id/realEstate")
+categoriesRoutes.get("/:id/realEstate",getCategoriesAndRealEstate)
 
 export default categoriesRoutes
