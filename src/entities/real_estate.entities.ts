@@ -20,7 +20,7 @@ class RealEstate {
    @PrimaryGeneratedColumn("increment")
    id: number;
 
-   @Column({ default: "false", type: "boolean" })
+   @Column({ default: false, type: "boolean" })
    sold: boolean;
    
    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
