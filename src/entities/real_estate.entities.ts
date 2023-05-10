@@ -14,9 +14,6 @@ import Address from "./addresses.entities";
 import Category from "./categories.entities";
 
 
-
-
-
 @Entity("real_estate")
 
 class RealEstate {
@@ -25,7 +22,7 @@ class RealEstate {
 
    @Column({ default: "false", type: "boolean" })
    sold: boolean;
-
+   
    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
    value: string |  number;
 
