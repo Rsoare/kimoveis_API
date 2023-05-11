@@ -2,8 +2,6 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import RealEstate from "./real_estate.entities";
 import User from "./users.entities";
 
-
-
 @Entity("schedules")
 class Schedule  {
    @PrimaryGeneratedColumn("increment")
@@ -13,7 +11,7 @@ class Schedule  {
    date: Date | string;
 
    @Column({ type: "time" })
-   hour: Date;
+   hour: Date | string;
 
    @ManyToOne(() => User,(user) => user.schedules)
    user: User;
