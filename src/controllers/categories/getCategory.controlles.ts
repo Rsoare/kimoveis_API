@@ -6,12 +6,10 @@ const getCategories = async (
    req: Request,
    res: Response
 ): Promise<Response> => {
+   
+   const newArrayCategory: Category[] = await getCategoriesServices();
 
-   const newArrayCategory:Category[] = await getCategoriesServices()
-
-   return res.status(200).json(newArrayCategory)
+   return res.status(200).json(newArrayCategory);
 };
 
-
-
-export default getCategories
+export default getCategories;

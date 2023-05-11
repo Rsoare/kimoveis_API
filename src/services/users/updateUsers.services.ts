@@ -14,7 +14,7 @@ const updateUsersServices = async (
 
    const usersRepository:Repository<User> = AppDataSource.getRepository(User) 
 
-   // const userData: User | null = await usersRepository.findOneBy({id:UserId})
+
 
    const userData:User | null = await AppDataSource
    .getRepository(User)

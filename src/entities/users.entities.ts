@@ -11,10 +11,8 @@ import {
 import Schedule from "./schedules.entities";
 import { hash } from "bcryptjs";
 
-
-@Entity("users") 
-
-class User  {
+@Entity("users")
+class User {
    @PrimaryGeneratedColumn("increment")
    id: number;
 
@@ -27,25 +25,25 @@ class User  {
    @Column({ default: "false", type: "boolean" })
    admin: boolean;
 
-   @Column({ type: "varchar", length: 120,select:false })
+   @Column({ type: "varchar", length: 120, select: false })
    password: string;
-   
-   @CreateDateColumn({type:"date"})
-   createdAt: Date| string;
 
-   @UpdateDateColumn({type:"date"})
+   @CreateDateColumn({ type: "date" })
+   createdAt: Date | string;
+
+   @UpdateDateColumn({ type: "date" })
    updatedAt: Date | string;
-   
-   @DeleteDateColumn({ nullable: true,type:"date" })
-   deletedAt?: Date | null ;
+
+   @DeleteDateColumn({ nullable: true, type: "date" })
+   deletedAt?: Date | null;
 
    @BeforeInsert()
-   async insertHashPassword(){
-      this.password = await hash(this.password,10)
+   async insertHashPassword() {
+      this.password = await hash(this.password, 10);
    }
-   
+
    @OneToMany(() => Schedule, (schedules) => schedules.user)
    schedules: Schedule[];
 }
 
-export default User ;
+export default User;

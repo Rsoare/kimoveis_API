@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 import {
-   updateSchemaRequest,
    userSchemaRequest,
    userSchemaResponse,
 } from "../../schemas/users/users.schemas";
@@ -11,6 +10,6 @@ type TUserRequest = z.infer<typeof userSchemaRequest>;
 
 type TUserResponse = z.infer<typeof userSchemaResponse>;
 
-type updateRequest = DeepPartial<TUserRequest>
+type updateRequest = DeepPartial<TUserRequest>;
 
-export { TUserRequest, TUserResponse, updateRequest};
+export { TUserRequest, TUserResponse, updateRequest };

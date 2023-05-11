@@ -1,6 +1,7 @@
 import { Router } from "express";
 import validBodySchema from "../../middlewares/validBodySchema";
-
+import { checkValidAdminToken, checkValidToken } from "../../middlewares/token";
+import { checkDuplicateEmail, checkValidUserId } from "../../middlewares/users";
 import {
    updateSchemaRequest,
    userSchemaRequest,
@@ -13,16 +14,6 @@ import {
    updateUsers,
 } from "../../controllers/users";
 
-import { 
-   checkValidAdminToken, 
-   checkValidToken 
-} from "../../middlewares/token";
-
-import { 
-   checkDuplicateEmail, 
-   checkValidUserId 
-} from "../../middlewares/users";
-
 const userRoutes: Router = Router();
 
 userRoutes.post("",
@@ -31,11 +22,7 @@ userRoutes.post("",
    postUsers
 );
 
-userRoutes.get("", 
-   checkValidToken, 
-   checkValidAdminToken, 
-   getUsers
-);
+userRoutes.get("", checkValidToken, checkValidAdminToken, getUsers);
 
 userRoutes.patch("/:id",
    checkValidUserId,

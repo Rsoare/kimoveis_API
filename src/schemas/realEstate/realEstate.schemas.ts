@@ -3,7 +3,7 @@ import { z } from "zod";
 const realEstateSchemas = z.object({
    id: z.number(),
    value: z.number().or(z.string()).default(0),
-   size: z.number().min(0,'Number must be greater than 0'),
+   size: z.number().min(0, "Number must be greater than 0"),
    categoryId: z.number(),
    sold: z.boolean().default(false),
    createdAt: z.string(),
@@ -19,21 +19,21 @@ const addressSchemas = z.object({
    state: z.string().max(2),
 });
 
-const realEstateRequest = realEstateSchemas.omit({ 
-   id: true, 
+const realEstateRequest = realEstateSchemas.omit({
+   id: true,
    sold: true,
-   createdAt:true,
-   updatedAt:true });
+   createdAt: true,
+   updatedAt: true,
+});
 
 const address = addressSchemas.omit({ id: true });
 
-const estateAndAdressRequest = realEstateRequest.extend({address})
+const estateAndAdressRequest = realEstateRequest.extend({ address });
 
-
-export { 
-   realEstateRequest, 
-   realEstateSchemas, 
-   address, 
+export {
+   realEstateRequest,
+   realEstateSchemas,
+   address,
    addressSchemas,
    estateAndAdressRequest,
-   };
+};

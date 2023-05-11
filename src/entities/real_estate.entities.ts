@@ -13,38 +13,35 @@ import Schedule from "./schedules.entities";
 import Address from "./addresses.entities";
 import Category from "./categories.entities";
 
-
 @Entity("real_estate")
-
 class RealEstate {
    @PrimaryGeneratedColumn("increment")
    id: number;
 
    @Column({ default: false, type: "boolean" })
    sold: boolean;
-   
+
    @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
-   value: string |  number;
+   value: string | number;
 
    @Column({ type: "integer" })
    size: number;
 
-   @CreateDateColumn({type:"date"})
+   @CreateDateColumn({ type: "date" })
    createdAt: Date | string;
 
-   @UpdateDateColumn({type:"date"})
+   @UpdateDateColumn({ type: "date" })
    updatedAt: Date | string;
 
    @OneToOne(() => Address, (address) => address.realEstate)
    @JoinColumn()
    address: Address;
-   
+
    @ManyToOne(() => Category, (category) => category.realEstate)
    category: Category;
 
    @OneToMany(() => Schedule, (schedule) => schedule.realEstate)
-   schedule: Schedule[];
-
+   schedules: Schedule[];
 }
 
-export default RealEstate ;
+export default RealEstate;

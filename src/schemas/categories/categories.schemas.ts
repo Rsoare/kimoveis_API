@@ -1,10 +1,10 @@
-import {z} from "zod"
+import { z } from "zod";
 
 const categorieSchemas = z.object({
-   id:z.number(),
-   name:z.string().max(45),
-})
+   id: z.number(),
+   name: z.string().max(45),
+});
 
-const ctgSchemaRequest = categorieSchemas.omit({id:true})
+const ctgSchemaRequest = categorieSchemas.omit({ id: true });
 
-export {ctgSchemaRequest} 
+export { ctgSchemaRequest };

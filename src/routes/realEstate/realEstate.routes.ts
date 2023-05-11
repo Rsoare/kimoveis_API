@@ -5,19 +5,16 @@ import { checkValidAdminToken, checkValidToken } from "../../middlewares/token";
 import { estateAndAdressRequest } from "../../schemas/realEstate/realEstate.schemas";
 import checkDuplicateAddress from "../../middlewares/realEstate/checkDuplicateAddress";
 
-
-const realEstatesRoutes:Router = Router()
-
+const realEstatesRoutes: Router = Router();
 
 realEstatesRoutes.post("",
    checkValidToken,
    checkValidAdminToken,
    validBodySchema(estateAndAdressRequest),
    checkDuplicateAddress,
-   postRealEstate)
+   postRealEstate
+);
 
-realEstatesRoutes.get("",getRealEstate)
+realEstatesRoutes.get("", getRealEstate);
 
-
-
-export default realEstatesRoutes
+export default realEstatesRoutes;

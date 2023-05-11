@@ -1,20 +1,19 @@
 import { Request, Response } from "express";
-import { TSchedulesRequest } from "../../interfaces/schedules";
 import { postSchedulesServices } from "../../services/schedules";
+import { TSchedulesRequest } from "../../interfaces/schedules/schedules.interfaces";
 
 const postSchedules = async (
    req: Request,
    res: Response
 ): Promise<Response> => {
 
-   const userId:number = parseInt(res.locals.sub)
-   
-   const dataBody:TSchedulesRequest = req.body
+   const userId: number = parseInt(res.locals.sub);
 
-   const newSchedules:object = await postSchedulesServices(dataBody,userId)
+   const dataBody: TSchedulesRequest = req.body;
 
-   return res.status(201).json(newSchedules)
+   const newSchedules: object = await postSchedulesServices(dataBody, userId);
+
+   return res.status(201).json(newSchedules);
 };
 
-
-export {postSchedules}
+export default postSchedules 

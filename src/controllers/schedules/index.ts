@@ -1,3 +1,4 @@
-import { postSchedules } from "./postSchedules.controllers";
+import postSchedules from "./postSchedules.controllers";
+import getSchedules from "./getSchedules.controllers";
 
-export {postSchedules}
+export { postSchedules, getSchedules };

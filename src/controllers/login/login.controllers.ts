@@ -2,16 +2,16 @@ import { Request, Response } from "express";
 import { TLoginRequest, Ttoken } from "../../interfaces/login/login.interfaces";
 import createToken from "../../services/login/createToken.services";
 
+const loginPost = async (
+   req:Request,
+   res: Response
+   ):Promise<Response> => {
 
-const loginPost = async (req:Request,res:Response):Promise<Response> =>{
-   
-   const bodyData:TLoginRequest = req.body
-   
-   const newToken:Ttoken = await createToken(bodyData)
+   const bodyData: TLoginRequest = req.body;
 
-   
-   return res.status(200).json(newToken)
-   
-}
+   const newToken: Ttoken = await createToken(bodyData);
 
-export default loginPost
+   return res.status(200).json(newToken);
+};
+
+export default loginPost;

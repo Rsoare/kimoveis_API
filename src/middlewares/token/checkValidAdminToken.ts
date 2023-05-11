@@ -6,19 +6,23 @@ const checkValidAdminToken = async (
    res: Response,
    next: NextFunction
 ): Promise<Response | void> => {
+   
+   const admin: boolean = res.locals.admin;
+   const sub: number = parseInt(res.locals.sub);
 
-   const admin:boolean = res.locals.admin
-   const sub:number = parseInt(res.locals.sub)
+   const routeName = req.baseUrl;
 
-   const paramsId:number = parseInt(req.params.id) 
+   const paramsId: number = parseInt(req.params.id);
 
-   if(!admin && sub !== paramsId){
-      throw new AppError("Insufficient permission",403)
+   if (!admin && sub !== paramsId) {
+      throw new AppError("Insufficient permission", 403);
    }
 
+   if (!admin && routeName == "/schedules") {
+      throw new AppError("Insufficient permission", 403);
+   }
 
-
-   return next()
+   return next();
 };
 
-export default checkValidAdminToken
+export default checkValidAdminToken;

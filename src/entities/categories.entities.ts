@@ -1,8 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import RealEstate from "./real_estate.entities";
 
-
-
 @Entity("categories")
 class Category {
    @PrimaryGeneratedColumn("increment")

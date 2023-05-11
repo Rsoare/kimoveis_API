@@ -1,3 +1,3 @@
-import checkDuplicateCategory from "./checkDuplicateCategory"
+import checkDuplicateCategory from "./checkDuplicateCategory";
 
-export {checkDuplicateCategory}
+export { checkDuplicateCategory };

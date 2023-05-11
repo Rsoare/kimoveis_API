@@ -2,17 +2,14 @@ import { Request, Response } from "express";
 import { getUsersServices } from "../../services/users";
 import { User } from "../../entities";
 
-
-
 const getUsers = async (
    req:Request,
-   res:Response
-   ):Promise<Response> =>{
-
-      const newArrayUsers:User[] = await getUsersServices()
+   res:Response)
+   :Promise<Response> => {
       
-      return res.status(200).json(newArrayUsers)
-   }
+   const newArrayUsers: User[] = await getUsersServices();
 
-   
-   export default getUsers
+   return res.status(200).json(newArrayUsers);
+};
+
+export default getUsers;

@@ -6,8 +6,7 @@ import userRoutes from "./routes/users/users.routes"
 import loginRoutes from "./routes/login/login.routes"
 import categoriesRoutes from "./routes/categories/categories.routes"
 import realEstatesRoutes from "./routes/realEstate/realEstate.routes"
-import schedulesRoutes from "./routes/schedules/schedules,routes"
-
+import schedulesRoutes from "./routes/schedules/schedules.routes"
 
 const app:Application = express()
 
